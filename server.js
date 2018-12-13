@@ -1,15 +1,20 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const bodyParser = require('body-parser');
 
-app.get('/login', function(req, res) {
+app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.post('/login', function(req, res) {
+  console.log(req.body);
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.send('Hello World');
+  res.send('Hello World').status(200);
 
 });
 
-app.use(express.static(path.join(__dirname, "public")));
 
 const server = app.listen(8881, function () {
   const host = server.address().address;

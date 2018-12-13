@@ -1,1 +1,1 @@
-const app = angular.module('myApp', ['loginCtrl']);
+const app = angular.module('myApp', []);
